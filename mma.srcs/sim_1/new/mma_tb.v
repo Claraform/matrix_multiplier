@@ -26,6 +26,7 @@ module mma_tb(
 
 // Fibonacci module inputs/outputs
 reg clk;
+reg start;
 reg [7:0] cycle = 0;
 reg [31:0] A = 32'b01000000000100110011001100110011;
 reg [31:0] B = 32'b01000000000100110011001100110011;
@@ -33,15 +34,20 @@ reg [31:0] C = 32'b01000000000100110011001100110011;
 wire [31:0] res;
 wire tvalid;
 //multiplier m(clk, A, B, C, res); 
-multiplier m(clk, tvalid, res);
+multiplier m(clk, start, tvalid, res);
 
 initial begin
 //    $display("clk cycle   A   B   C   res");
 //    $monitor("cycle=%2d   A=%h, B=%h, C=%h, result=%h", cycle, A, B, C, res);
-    $display("clk cycle   tvalid    res");
-    $monitor("cycle=%2d  tvalid=%b result=%h", cycle, tvalid, res);
+    $display("clk cycle  start tvalid    res");
+    $monitor("cycle=%2d  start=%b valid=%b result=%h", cycle, start, tvalid, res);
     
+    start <= 0;
     clk <= 0;
+    #5
+    start <= 1;
+    #5
+    start <= 0;
     
     repeat(60)  // <<< NB: may need to depending on n
         begin

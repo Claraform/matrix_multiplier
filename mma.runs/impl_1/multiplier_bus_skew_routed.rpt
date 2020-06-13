@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2.1 (lin64) Build 2729669 Thu Dec  5 04:48:12 MST 2019
-| Date         : Sat Jun 13 16:11:57 2020
+| Date         : Sat Jun 13 18:12:40 2020
 | Host         : utnubu running 64-bit Ubuntu 18.04.1 LTS
 | Command      : report_bus_skew -warn_on_violation -file multiplier_bus_skew_routed.rpt -pb multiplier_bus_skew_routed.pb -rpx multiplier_bus_skew_routed.rpx
 | Design       : multiplier

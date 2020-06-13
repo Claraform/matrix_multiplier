@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2.1 (lin64) Build 2729669 Thu Dec  5 04:48:12 MST 2019
-| Date         : Sat Jun 13 16:11:57 2020
+| Date         : Sat Jun 13 18:12:40 2020
 | Host         : utnubu running 64-bit Ubuntu 18.04.1 LTS
 | Command      : report_timing_summary -max_paths 10 -file multiplier_timing_summary_routed.rpt -pb multiplier_timing_summary_routed.pb -rpx multiplier_timing_summary_routed.rpx -warn_on_violation
 | Design       : multiplier
@@ -69,14 +69,14 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 1620 pins that are not constrained for maximum delay. (HIGH)
+ There are 1666 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
 5. checking no_input_delay
 --------------------------
- There are 0 input ports with no input delay specified.
+ There is 1 input port with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
