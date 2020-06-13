@@ -3,6 +3,7 @@
 Dec  5 2019
 04:51:02
 /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.sim/sim_1/behav/xsim/glbl.v,1573089660,verilog,,,,glbl,,,,,,,,
-/home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sim_1/new/mma_tb.v,1592047559,verilog,,,,mma_tb,,,,,,,,
+/home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sim_1/new/mma_tb.v,1592057129,verilog,,,,mma_tb,,,,,,,,
+/home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v,1592056173,verilog,,/home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/new/multiplier.v,,blk_mem_gen_0,,,,,,,,
 /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/ip/floating_point_0/sim/floating_point_0.vhd,1592045355,vhdl,,,,floating_point_0,,,,,,,,
-/home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/new/multiplier.v,1592047384,verilog,,/home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sim_1/new/mma_tb.v,,multiplier,,,,,,,,
+/home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/new/multiplier.v,1592058123,verilog,,/home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sim_1/new/mma_tb.v,,multiplier,,,,,,,,

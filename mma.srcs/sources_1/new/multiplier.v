@@ -22,7 +22,7 @@
 
 module multiplier(
     input  CLK100MHZ,
-    //input BTNL,
+    output wire tvalid,
     output wire [31:0] result
     );
     
@@ -30,6 +30,27 @@ module multiplier(
     //wire activate;
     //Debounce change_state (CLK100MHZ, BTNL, activate);
     
+    //BRAM I/O
+    reg ena;
+    reg wea;
+    reg enb;
+    reg [6:0] addra=0;
+    reg [31:0] dina; 
+    reg [6:0] addrb=0;
+    wire [31:0] doutb;
+    
+    //BRAM Module
+    blk_mem_gen_0 your_instance_name (
+      .clka(CLK100MHZ),    // input wire clka
+      .ena(ena),      // input wire ena
+      .wea(wea),      // input wire [0 : 0] wea
+      .addra(addra),  // input wire [6 : 0] addra
+      .dina(dina),    // input wire [31 : 0] dina
+      .clkb(CLK100MHZ),    // input wire clkb
+      .enb(enb),      // input wire enb
+      .addrb(addrb),  // input wire [6 : 0] addrb
+      .doutb(doutb)  // output wire [31 : 0] doutb
+    );
   
     //Floating Point Module I/O
     reg s_axis_a_tvalid;  
@@ -53,15 +74,38 @@ module multiplier(
         .m_axis_result_tvalid(m_axis_result_tvalid),  // output wire 
         .m_axis_result_tdata(m_axis_result_tdata)    // output wire 
     );
-    assign result = m_axis_result_tdata;
+    
+    assign result = doutb;
+    assign tvalid = m_axis_result_tvalid;
     
     always @(posedge CLK100MHZ) begin
-        s_axis_a_tdata <= 32'b01000000000100110011001100110011;
+        s_axis_a_tdata <= doutb;
         s_axis_a_tvalid <= 1;
-        s_axis_b_tdata <= 32'b01000000000100110011001100110011;
+        addrb <= addrb + 1;
+        s_axis_b_tdata <= doutb;
         s_axis_b_tvalid <= 1;
-        s_axis_c_tdata <= 32'b01000000000100110011001100110011;
+        s_axis_c_tdata <= doutb;
         s_axis_c_tvalid <= 1;
+        
+        if (m_axis_result_tvalid) begin
+            wea <= 1;
+            dina <= m_axis_result_tdata;
+            wea <= 0;
+            addra <= addra + 1;
+        end
+        
+//        s_axis_c_tdata <= m_axis_result_tdata;
+//        s_axis_a_tdata <= 0;
+//        s_axis_a_tvalid <= 1;
+//        s_axis_b_tdata <= 0;
+//        s_axis_b_tvalid <= 1;
+//        s_axis_c_tvalid <= 1;
+        
+          
+//        wea <= 1;
+//        dina <= m_axis_result_tdata;
+//        wea <= 0;
+//        addra <= addra + 1;
     end
 
 endmodule

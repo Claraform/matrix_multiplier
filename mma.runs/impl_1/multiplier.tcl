@@ -74,8 +74,10 @@ set rc [catch {
   set_property parent.project_path /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.xpr [current_project]
   set_property ip_output_repo /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
+  set_property XPM_LIBRARIES XPM_MEMORY [current_project]
   add_files -quiet /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.runs/synth_1/multiplier.dcp
   read_ip -quiet /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/ip/floating_point_0/floating_point_0.xci
+  read_ip -quiet /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
   link_design -top multiplier -part xc7a100tcsg324-1
   close_msg_db -file init_design.pb
 } RESULT]

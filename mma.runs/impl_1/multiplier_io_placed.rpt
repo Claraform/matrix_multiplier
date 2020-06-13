@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2019.2.1 (lin64) Build 2729669 Thu Dec  5 04:48:12 MST 2019
-| Date                      : Sat Jun 13 13:21:00 2020
+| Date                      : Sat Jun 13 16:11:19 2020
 | Host                      : utnubu running 64-bit Ubuntu 18.04.1 LTS
 | Command                   : report_io -file multiplier_io_placed.rpt
 | Design                    : multiplier
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|            33 |
+|            34 |
 +---------------+
 
 
@@ -282,7 +282,7 @@ Table of Contents
 | P11        |             | Dedicated  | M2_0                         | Config      |             |       0 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | P12        |             | Dedicated  | M0_0                         | Config      |             |       0 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | P13        |             | Dedicated  | M1_0                         | Config      |             |       0 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
-| P14        |             | High Range | IO_L8N_T1_D12_14             | User IO     |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
+| P14        | tvalid      | High Range | IO_L8N_T1_D12_14             | OUTPUT      | LVCMOS18*   |      14 |         12 | SLOW |                     |            FP_VTT_50 |         | UNFIXED    |           |          |      | NONE             |              |                   |              |
 | P15        | result[24]  | High Range | IO_L13P_T2_MRCC_14           | OUTPUT      | LVCMOS18*   |      14 |         12 | SLOW |                     |            FP_VTT_50 |         | UNFIXED    |           |          |      | NONE             |              |                   |              |
 | P16        |             | High Range | VCCO_14                      | VCCO        |             |      14 |            |      |                     |                      |    1.80 |            |           |          |      |                  |              |                   |              |
 | P17        | result[26]  | High Range | IO_L12P_T1_MRCC_14           | OUTPUT      | LVCMOS18*   |      14 |         12 | SLOW |                     |            FP_VTT_50 |         | UNFIXED    |           |          |      | NONE             |              |                   |              |
