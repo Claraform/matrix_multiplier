@@ -45,11 +45,19 @@ initial begin
     start <= 0;
     clk <= 0;
     #5
-    start <= 1;
+    clk <= 1;
     #5
+    start <= 1;
+    cycle <= 1;
+    #5
+    clk <= 0;
+    #5
+    clk <= 1;
+    #5
+    cycle <= 2;
     start <= 0;
     
-    repeat(60)  // <<< NB: may need to depending on n
+    repeat(120)  // <<< NB: may need to depending on n
         begin
             #5 clk = ~clk;
             if (clk == 1) begin

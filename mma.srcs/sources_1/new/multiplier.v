@@ -32,10 +32,10 @@ module multiplier(
     //Debounce change_state (CLK100MHZ, BTNL, activate);
     
     //Matrix variables
-    reg [6:0] A_row = 1;
-    reg [6:0] A_col = 2;
-    reg [6:0] B_row = 2;
-    reg [6:0] B_col = 1;
+    reg [6:0] A_row = 2;
+    reg [6:0] A_col = 1;
+    reg [6:0] B_row = 1;
+    reg [6:0] B_col = 2;
     reg [6:0] size = 2;
     
     //BRAM I/O
@@ -88,49 +88,58 @@ module multiplier(
     
     reg [6:0] count = 0;
     reg [6:0] data_points = 0;
-    reg processed = 0;
+    reg stop = 0;
     
     assign result = m_axis_result_tdata;
     assign tvalid = m_axis_result_tvalid;
-       
+    
     always @(posedge CLK100MHZ) begin
-        if (processed || start) begin
-            s_axis_a_tvalid <= 0;
-            s_axis_b_tvalid <= 0;
-            s_axis_c_tvalid <= 0;
-            
+        if (count < A_row) begin
+//            s_axis_a_tvalid = 0;
+//            s_axis_b_tvalid = 0;
+//            s_axis_c_tvalid = 0;
             if (count == 0) begin
                 s_axis_c_tdata <= 0;
                 s_axis_c_tvalid <= 1;
+                addrb <= add_temp; 
+                s_axis_a_tdata <= doutb;
+                s_axis_a_tvalid <= 1;
+                addrb <= addrb + size;
+                s_axis_b_tdata <= doutb;
+                s_axis_b_tvalid <= 1;
+                add_temp <= add_temp + 1;
+                
+                count <= count + 1;
             end
-            else begin
+            else if (m_axis_result_tvalid) begin
                 s_axis_c_tdata <= m_axis_result_tdata;
                 s_axis_c_tvalid <= 1;
+                addrb <= add_temp; 
+                s_axis_a_tdata <= doutb;
+                s_axis_a_tvalid <= 1;
+                addrb <= addrb + size;
+                s_axis_b_tdata <= doutb;
+                s_axis_b_tvalid <= 1;
+                add_temp <= add_temp + 1;
+                
+                count <= count + 1;
             end
           
-            addrb <= add_temp; 
-            s_axis_a_tdata <= doutb;
-            s_axis_a_tvalid <= 1;
-            addrb <= addrb + size;
-            s_axis_b_tdata <= doutb;
-            s_axis_b_tvalid <= 1;
-            add_temp <= add_temp + 1;
             
-            count <= count + 1;
-            
-            if (count == (A_row-1)) begin
-                data_points <= data_points + 1;
-                count <= 0;
-                //if (m_axis_result_tvalid) begin
-                    wea = 1;
-                    dina = m_axis_result_tdata;
-                    wea = 0;
-                    addra = addra + 1;
-                    processed = 1;
-                //end
-            end
-        
         end
+        else if (count == A_row) begin
+            count <= 0;
+            if (m_axis_result_tvalid) begin
+                wea = 1;
+                dina = m_axis_result_tdata;
+                wea = 0;
+                addra = addra + 1;
+            end
+//            s_axis_a_tvalid = 0;
+//            s_axis_b_tvalid = 0;
+//            s_axis_c_tvalid = 0;
+        end
+            
     end
-
-endmodule
+    
+    endmodule
