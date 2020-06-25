@@ -103,7 +103,7 @@ module multiplier(
     assign c = s_axis_c_tdata;
     assign cnt = count;
     
-    always @(posedge fetch) begin
+    always @(posedge fetch, negedge fetch) begin
         if (fetch_index == 0) begin
             addrb <= add_temp; 
             s_axis_a_tdata = doutb;
@@ -119,11 +119,10 @@ module multiplier(
     
     always @(posedge calculate, negedge calculate) begin
         if (fetch_cycle < 2) begin
-            fetch <= 1;
+            fetch <= ~fetch;
             fetch_cycle <= fetch_cycle + 1;
         end 
         else begin
-            fetch_cycle <= 0;
             s_axis_a_tvalid = 1;
             s_axis_b_tvalid = 1;
             s_axis_c_tdata <= m_axis_result_tdata;
