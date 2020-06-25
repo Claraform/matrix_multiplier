@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2.1 (lin64) Build 2729669 Thu Dec  5 04:48:12 MST 2019
--- Date        : Sat Jun 13 15:51:27 2020
+-- Date        : Wed Jun 24 19:48:29 2020
 -- Host        : utnubu running 64-bit Ubuntu 18.04.1 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_stub.vhdl

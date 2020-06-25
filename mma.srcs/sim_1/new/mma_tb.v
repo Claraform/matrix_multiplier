@@ -28,36 +28,36 @@ module mma_tb(
 reg clk;
 reg start;
 reg [7:0] cycle = 0;
-reg [31:0] A = 32'b01000000000100110011001100110011;
-reg [31:0] B = 32'b01000000000100110011001100110011;
-reg [31:0] C = 32'b01000000000100110011001100110011;
 wire [31:0] res;
+wire [31:0] a;
+wire [31:0] b;
+wire [31:0] c;
+wire [5:0] count;
 wire tvalid;
 //multiplier m(clk, A, B, C, res); 
-multiplier m(clk, start, tvalid, res);
+multiplier m(clk, start, a, b, c, res, count);
 
 initial begin
 //    $display("clk cycle   A   B   C   res");
 //    $monitor("cycle=%2d   A=%h, B=%h, C=%h, result=%h", cycle, A, B, C, res);
     $display("clk cycle  start tvalid    res");
-    $monitor("cycle=%2d  start=%b valid=%b result=%h", cycle, start, tvalid, res);
+    $monitor("clk=%2d  count=%2d a=%h b=%h c=%h result=%h", clk, count, a, b, c, res);
     
-    start <= 0;
+    
     clk <= 0;
+    start <= 1;
     #5
     clk <= 1;
-    #5
-    start <= 1;
     cycle <= 1;
     #5
     clk <= 0;
     #5
     clk <= 1;
     #5
-    cycle <= 2;
+    clk <= 0;
     start <= 0;
     
-    repeat(120)  // <<< NB: may need to depending on n
+    repeat(300)  // <<< NB: may need to depending on n
         begin
             #5 clk = ~clk;
             if (clk == 1) begin

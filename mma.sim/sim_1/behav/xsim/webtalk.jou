@@ -2,8 +2,8 @@
 # Webtalk v2019.2.1 (64-bit)
 # SW Build 2729669 on Thu Dec  5 04:48:12 MST 2019
 # IP Build 2729494 on Thu Dec  5 07:38:25 MST 2019
-# Start of session at: Wed Jun 17 12:44:34 2020
-# Process ID: 9363
+# Start of session at: Wed Jun 24 16:08:51 2020
+# Process ID: 26756
 # Current directory: /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.sim/sim_1/behav/xsim
 # Command line: wbtcv -mode batch -source /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.sim/sim_1/behav/xsim/xsim.dir/mma_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.sim/sim_1/behav/xsim/webtalk.log

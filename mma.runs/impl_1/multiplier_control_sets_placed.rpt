@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2.1 (lin64) Build 2729669 Thu Dec  5 04:48:12 MST 2019
-| Date         : Sat Jun 13 18:12:03 2020
+| Date         : Thu Jun 25 11:43:31 2020
 | Host         : utnubu running 64-bit Ubuntu 18.04.1 LTS
 | Command      : report_control_sets -verbose -file multiplier_control_sets_placed.rpt
 | Design       : multiplier
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    12 |
-|    Minimum number of control sets                        |    12 |
+| Total control sets                                       |    19 |
+|    Minimum number of control sets                        |    19 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    32 |
+| Unused register locations in slices containing registers |    47 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    12 |
-| >= 0 to < 4        |     1 |
-| >= 4 to < 6        |     3 |
+| Total control sets |    19 |
+| >= 0 to < 4        |     3 |
+| >= 4 to < 6        |     4 |
 | >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     0 |
+| >= 8 to < 10       |     1 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     8 |
+| >= 16              |    11 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,33 +58,40 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             860 |          189 |
+| No           | No                    | No                     |             981 |          220 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             146 |           33 |
-| Yes          | No                    | No                     |             106 |           24 |
+| No           | Yes                   | No                     |             168 |           44 |
+| Yes          | No                    | No                     |             211 |           45 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |               0 |            0 |
+| Yes          | Yes                   | No                     |               1 |            1 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+
-|     Clock Signal     |   Enable Signal  |                                                                Set/Reset Signal                                                               | Slice Load Count | Bel Load Count |
-+----------------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+
-|  CLK100MHZ_IBUF_BUFG |                  | float/U0/i_synth/FMA_OP.OP/addsub/add/EXP/conv_exp.downsize_exp/flow_up_rnd1                                                                  |                1 |              1 |
-|  CLK100MHZ_IBUF_BUFG |                  | float/U0/i_synth/FMA_OP.OP/addsub/add/NORM/LZE/ENCODE[0].MUX_Z/OP_DEL/i_pipe/first_q[1]                                                       |                1 |              4 |
-|  CLK100MHZ_IBUF_BUFG |                  | float/U0/i_synth/FMA_OP.OP/addsub/add/NORM/LZE/ENCODE[0].MUX_Z/OP_DEL/i_pipe/opt_has_pipe.first_q_reg[0]_0                                    |                1 |              4 |
-|  CLK100MHZ_IBUF_BUFG |                  | float/U0/i_synth/FMA_OP.OP/addsub/add/ALIGN_BLK/aligner.ALIGN_SHIFT/ALIGN_Z_D/MUX_LOOP[1].SKEW_DIST_DEL.DEL_DIST/i_pipe/ext_del_distance_2[0] |                2 |              4 |
-|  CLK100MHZ_IBUF_BUFG |                  | float/U0/i_synth/FMA_OP.OP/addsub/add/ALIGN_BLK/ABS_DELAY/i_pipe/opt_has_pipe.first_q_reg[5]_0                                                |                3 |             16 |
-|  CLK100MHZ_IBUF_BUFG |                  | float/U0/i_synth/FMA_OP.OP/addsub/add/NORM/LZE/ZERO_DET_CC_1/CHAIN_GEN[3].CARRYS_DEL.NEED_DEL.CARRYS_FD_0                                     |                3 |             16 |
-|  CLK100MHZ_IBUF_BUFG |                  | float/U0/i_synth/FMA_OP.OP/addsub/add/NORM/LZE/ZERO_DET_CC_1/CARRYS_OUT[1]                                                                    |                2 |             16 |
-|  CLK100MHZ_IBUF_BUFG |                  | float/U0/i_synth/FMA_OP.OP/addsub/add/ALIGN_BLK/ABS_DELAY/i_pipe/first_q[5]                                                                   |                4 |             16 |
-|  CLK100MHZ_IBUF_BUFG |                  | float/U0/i_synth/FMA_OP.OP/addsub/add/EXP/conv_exp.downsize_exp/STATE_DELAY/i_pipe/op_state[0]                                                |                4 |             22 |
-|  CLK100MHZ_IBUF_BUFG |                  | float/U0/i_synth/FMA_OP.OP/addsub/add/zero_largest                                                                                            |               12 |             47 |
-|  CLK100MHZ_IBUF_BUFG | dina[31]_i_1_n_0 |                                                                                                                                               |               24 |            106 |
-|  CLK100MHZ_IBUF_BUFG |                  |                                                                                                                                               |              189 |            880 |
-+----------------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+
++----------------------+----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+
+|     Clock Signal     |     Enable Signal    |                                                                Set/Reset Signal                                                               | Slice Load Count | Bel Load Count |
++----------------------+----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+
+|  CLK100MHZ_IBUF_BUFG |                      | float/U0/i_synth/FMA_OP.OP/addsub/add/EXP/conv_exp.downsize_exp/flow_up_rnd1                                                                  |                1 |              1 |
+|  CLK100MHZ_IBUF_BUFG | row_items[5]_i_2_n_0 | row_items[5]_i_1_n_0                                                                                                                          |                1 |              1 |
+|  calculate_BUFG      |                      |                                                                                                                                               |                2 |              3 |
+|  CLK100MHZ_IBUF_BUFG |                      | float/U0/i_synth/FMA_OP.OP/addsub/add/ALIGN_BLK/aligner.ALIGN_SHIFT/ALIGN_Z_D/MUX_LOOP[1].SKEW_DIST_DEL.DEL_DIST/i_pipe/ext_del_distance_2[0] |                2 |              4 |
+|  CLK100MHZ_IBUF_BUFG |                      | float/U0/i_synth/FMA_OP.OP/addsub/add/NORM/LZE/ENCODE[0].MUX_Z/OP_DEL/i_pipe/opt_has_pipe.first_q_reg[0]_0                                    |                1 |              4 |
+|  CLK100MHZ_IBUF_BUFG |                      | float/U0/i_synth/FMA_OP.OP/addsub/add/NORM/LZE/ENCODE[0].MUX_Z/OP_DEL/i_pipe/first_q[1]                                                       |                1 |              4 |
+|  CLK100MHZ_IBUF_BUFG | row_items[5]_i_2_n_0 |                                                                                                                                               |                2 |              5 |
+|  fetch_BUFG          |                      |                                                                                                                                               |                3 |              8 |
+|  CLK100MHZ_IBUF_BUFG |                      | float/U0/i_synth/FMA_OP.OP/addsub/add/ALIGN_BLK/ABS_DELAY/i_pipe/first_q[5]                                                                   |                5 |             16 |
+|  CLK100MHZ_IBUF_BUFG |                      | float/U0/i_synth/FMA_OP.OP/addsub/add/NORM/LZE/ZERO_DET_CC_1/CARRYS_OUT[1]                                                                    |                2 |             16 |
+|  CLK100MHZ_IBUF_BUFG |                      | float/U0/i_synth/FMA_OP.OP/addsub/add/NORM/LZE/ZERO_DET_CC_1/CHAIN_GEN[3].CARRYS_DEL.NEED_DEL.CARRYS_FD_0                                     |                2 |             16 |
+|  CLK100MHZ_IBUF_BUFG |                      | float/U0/i_synth/FMA_OP.OP/addsub/add/ALIGN_BLK/ABS_DELAY/i_pipe/opt_has_pipe.first_q_reg[5]_0                                                |                3 |             16 |
+|  calculate_BUFG      | fetch_cycle[1]       |                                                                                                                                               |                6 |             32 |
+|  CLK100MHZ_IBUF_BUFG | dina                 |                                                                                                                                               |                6 |             39 |
+|  CLK100MHZ_IBUF_BUFG |                      | float/U0/i_synth/FMA_OP.OP/addsub/add/EXP/conv_exp.downsize_exp/STATE_DELAY/i_pipe/op_state[0]                                                |               13 |             44 |
+|  CLK100MHZ_IBUF_BUFG |                      | float/U0/i_synth/FMA_OP.OP/addsub/add/zero_largest                                                                                            |               14 |             47 |
+|  fetch_BUFG          | fetch_index_i_1_n_0  |                                                                                                                                               |               11 |             64 |
+|  fetch_BUFG          | fetch_index          |                                                                                                                                               |               20 |             71 |
+|  CLK100MHZ_IBUF_BUFG |                      |                                                                                                                                               |              215 |           1024 |
++----------------------+----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+------------------+----------------+
 
 

@@ -23,8 +23,11 @@
 module multiplier(
     input  CLK100MHZ,
     input start,
-    output wire tvalid,
-    output wire [31:0] result
+    output wire [31:0] a,
+    output wire [31:0] b,
+    output wire [31:0] c,
+    output wire [31:0] result,
+    output wire [5:0] cnt
     );
     
     //Debounce module for activate button
@@ -40,9 +43,9 @@ module multiplier(
     
     //BRAM I/O
     reg ena = 1;
-    reg wea;
+    reg wea = 1;
     reg enb = 1;
-    reg [6:0] addra=0;
+    reg [6:0] addra=10;
     reg [31:0] dina; 
     reg [6:0] addrb=0;
     wire [31:0] doutb;
@@ -86,60 +89,74 @@ module multiplier(
         .m_axis_result_tdata(m_axis_result_tdata)    // output wire 
     );
     
-    reg [6:0] count = 0;
-    reg [6:0] data_points = 0;
-    reg stop = 0;
+    reg [5:0] count = 0;
+    reg [5:0] row_items = 0;
+    reg [5:0] col_items = 0;
+    reg fetch = 0;
+    reg fetch_index = 0;
+    reg [2:0] fetch_cycle = 0;
+    reg calculate = 0;
     
     assign result = m_axis_result_tdata;
-    assign tvalid = m_axis_result_tvalid;
+    assign a = s_axis_a_tdata;
+    assign b = s_axis_b_tdata;
+    assign c = s_axis_c_tdata;
+    assign cnt = count;
+    
+    always @(posedge fetch) begin
+        if (fetch_index == 0) begin
+            addrb <= add_temp; 
+            s_axis_a_tdata = doutb;
+            fetch_index <= 1;
+        end
+        if (fetch_index == 1) begin
+            addrb <= addrb + size;
+            s_axis_b_tdata = doutb;
+            add_temp <= add_temp + 1;
+            fetch_index <= 0;
+        end
+    end
+    
+    always @(posedge calculate, negedge calculate) begin
+        if (fetch_cycle < 2) begin
+            fetch <= 1;
+            fetch_cycle <= fetch_cycle + 1;
+        end 
+        else begin
+            fetch_cycle <= 0;
+            s_axis_a_tvalid = 1;
+            s_axis_b_tvalid = 1;
+            s_axis_c_tdata <= m_axis_result_tdata;
+            s_axis_c_tvalid <= 1;
+        end       
+    end
+    
     
     always @(posedge CLK100MHZ) begin
-        if (count < A_row) begin
-//            s_axis_a_tvalid = 0;
-//            s_axis_b_tvalid = 0;
-//            s_axis_c_tvalid = 0;
-            if (count == 0) begin
-                s_axis_c_tdata <= 0;
-                s_axis_c_tvalid <= 1;
-                addrb <= add_temp; 
-                s_axis_a_tdata <= doutb;
-                s_axis_a_tvalid <= 1;
-                addrb <= addrb + size;
-                s_axis_b_tdata <= doutb;
-                s_axis_b_tvalid <= 1;
-                add_temp <= add_temp + 1;
-                
-                count <= count + 1;
-            end
-            else if (m_axis_result_tvalid) begin
-                s_axis_c_tdata <= m_axis_result_tdata;
-                s_axis_c_tvalid <= 1;
-                addrb <= add_temp; 
-                s_axis_a_tdata <= doutb;
-                s_axis_a_tvalid <= 1;
-                addrb <= addrb + size;
-                s_axis_b_tdata <= doutb;
-                s_axis_b_tvalid <= 1;
-                add_temp <= add_temp + 1;
-                
-                count <= count + 1;
-            end
-          
-            
+//        if (start) begin
+//            s_axis_c_tdata <= 0;
+//            count <= 0;
+//        end
+        if (count < 3) begin
+            calculate <= ~calculate;
         end
-        else if (count == A_row) begin
+//        if (count >= 5 && count < 25) begin
+//            calculate <= 0;
+//        end
+        if (count >= 25) begin
+            row_items <= row_items + 1;
             count <= 0;
-            if (m_axis_result_tvalid) begin
-                wea = 1;
-                dina = m_axis_result_tdata;
-                wea = 0;
+            if (row_items == A_row) begin
+                row_items <= 0;
+                col_items <= col_items + 1;
+                dina <= m_axis_result_tdata;
                 addra = addra + 1;
-            end
-//            s_axis_a_tvalid = 0;
-//            s_axis_b_tvalid = 0;
-//            s_axis_c_tvalid = 0;
+                if (col_items == A_col) begin
+                    // We are done
+                end
+            end  
         end
-            
+        count <= count + 1;             
     end
     
     endmodule
