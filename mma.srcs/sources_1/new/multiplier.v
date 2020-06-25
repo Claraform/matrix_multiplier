@@ -123,6 +123,7 @@ module multiplier(
             fetch_cycle <= fetch_cycle + 1;
         end 
         else begin
+            fetch_cycle <= 0;
             s_axis_a_tvalid = 1;
             s_axis_b_tvalid = 1;
             s_axis_c_tdata <= m_axis_result_tdata;
@@ -136,7 +137,7 @@ module multiplier(
 //            s_axis_c_tdata <= 0;
 //            count <= 0;
 //        end
-        if (count < 3) begin
+        if (count < 5) begin
             calculate <= ~calculate;
         end
 //        if (count >= 5 && count < 25) begin
