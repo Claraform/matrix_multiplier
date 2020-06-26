@@ -21,7 +21,7 @@ The FPGA code is in the form of a Vivado Project.
 
 The team used Vivado 2019.2 - it is unknown whether it is compatible with past versions.
 
-There were sometimes issues with the project not inporting the correct BRAM structures. 
+There were sometimes issues with the project not importing the correct BRAM structures. 
 
 If this is the case the BRAM must be manually added.
 
