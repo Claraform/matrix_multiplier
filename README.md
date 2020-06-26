@@ -26,6 +26,10 @@ The Golden Measure code require gcc to compile
 
 There is a makefile with the following rules:
 
+
 default: compile into an executable
+
 run: run the executable
+
 clean: remove binary and project files
+
