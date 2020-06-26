@@ -1,6 +1,8 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
-"../../../../mma.srcs/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v" \
+"../../../../mma.srcs/sources_1/ip/matrixC/sim/matrixC.v" \
+"../../../../mma.srcs/sources_1/ip/matrixB/sim/matrixB.v" \
+"../../../../mma.srcs/sources_1/ip/matrixA/sim/matrixA.v" \
 "../../../../mma.srcs/sources_1/new/multiplier.v" \
 "../../../../mma.srcs/sim_1/new/mma_tb.v" \
 

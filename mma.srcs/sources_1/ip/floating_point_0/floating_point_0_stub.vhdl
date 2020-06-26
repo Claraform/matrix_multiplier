@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2.1 (lin64) Build 2729669 Thu Dec  5 04:48:12 MST 2019
--- Date        : Sat Jun 13 12:51:17 2020
+-- Date        : Sat Jun 13 12:51:13 2020
 -- Host        : utnubu running 64-bit unknown
--- Command     : write_vhdl -force -mode synth_stub
---               /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/ip/floating_point_0/floating_point_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top floating_point_0 -prefix
+--               floating_point_0_ floating_point_0_stub.vhdl
 -- Design      : floating_point_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tcsg324-1

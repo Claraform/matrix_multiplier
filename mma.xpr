@@ -30,20 +30,20 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="nexys-a7-100t"/>
-    <Option Name="WTXSimLaunchSim" Val="87"/>
+    <Option Name="WTXSimLaunchSim" Val="117"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="4"/>
-    <Option Name="WTModelSimExportSim" Val="4"/>
-    <Option Name="WTQuestaExportSim" Val="4"/>
-    <Option Name="WTIesExportSim" Val="4"/>
-    <Option Name="WTVcsExportSim" Val="4"/>
-    <Option Name="WTRivieraExportSim" Val="4"/>
-    <Option Name="WTActivehdlExportSim" Val="4"/>
+    <Option Name="WTXSimExportSim" Val="12"/>
+    <Option Name="WTModelSimExportSim" Val="12"/>
+    <Option Name="WTQuestaExportSim" Val="12"/>
+    <Option Name="WTIesExportSim" Val="12"/>
+    <Option Name="WTVcsExportSim" Val="12"/>
+    <Option Name="WTRivieraExportSim" Val="12"/>
+    <Option Name="WTActivehdlExportSim" Val="12"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -59,6 +59,13 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/ip/floating_point_0/floating_point_0.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/new/multiplier.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -109,8 +116,8 @@
         <Option Name="TopAutoSet" Val="TRUE"/>
       </Config>
     </FileSet>
-    <FileSet Name="floating_point_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/floating_point_0">
-      <File Path="$PSRCDIR/sources_1/ip/floating_point_0/floating_point_0.xci">
+    <FileSet Name="matrixA" Type="BlockSrcs" RelSrcDir="$PSRCDIR/matrixA">
+      <File Path="$PSRCDIR/sources_1/ip/matrixA/matrixA.xci">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -118,12 +125,12 @@
         </FileInfo>
       </File>
       <Config>
-        <Option Name="TopModule" Val="floating_point_0"/>
+        <Option Name="TopModule" Val="matrixA"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="blk_mem_gen_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/blk_mem_gen_0">
-      <File Path="$PSRCDIR/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci">
+    <FileSet Name="matrixB" Type="BlockSrcs" RelSrcDir="$PSRCDIR/matrixB">
+      <File Path="$PSRCDIR/sources_1/ip/matrixB/matrixB.xci">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -131,7 +138,20 @@
         </FileInfo>
       </File>
       <Config>
-        <Option Name="TopModule" Val="blk_mem_gen_0"/>
+        <Option Name="TopModule" Val="matrixB"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="matrixC" Type="BlockSrcs" RelSrcDir="$PSRCDIR/matrixC">
+      <File Path="$PSRCDIR/sources_1/ip/matrixC/matrixC.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="matrixC"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -171,9 +191,11 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="floating_point_0_synth_1" Type="Ft3:Synth" SrcSet="floating_point_0" Part="xc7a100tcsg324-1" ConstrsSet="floating_point_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/floating_point_0_synth_1" IncludeInArchive="true">
+    <Run Id="matrixA_synth_1" Type="Ft3:Synth" SrcSet="matrixA" Part="xc7a100tcsg324-1" ConstrsSet="matrixA" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/matrixA_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -181,9 +203,23 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="blk_mem_gen_0_synth_1" Type="Ft3:Synth" SrcSet="blk_mem_gen_0" Part="xc7a100tcsg324-1" ConstrsSet="blk_mem_gen_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/blk_mem_gen_0_synth_1" IncludeInArchive="true">
+    <Run Id="matrixB_synth_1" Type="Ft3:Synth" SrcSet="matrixB" Part="xc7a100tcsg324-1" ConstrsSet="matrixB" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/matrixB_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="matrixC_synth_1" Type="Ft3:Synth" SrcSet="matrixC" Part="xc7a100tcsg324-1" ConstrsSet="matrixC" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/matrixC_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -209,9 +245,11 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="floating_point_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="floating_point_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="floating_point_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="matrixA_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="matrixA" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="matrixA_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -226,9 +264,30 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="blk_mem_gen_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="blk_mem_gen_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="blk_mem_gen_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="matrixB_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="matrixB" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="matrixB_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design" EnableStepBool="1"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="matrixC_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="matrixC" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="matrixC_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

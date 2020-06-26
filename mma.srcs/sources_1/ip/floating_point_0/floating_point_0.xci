@@ -265,6 +265,7 @@
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_Result_Fraction_Width" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.Flow_Control" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.Has_RESULT_TREADY" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.Maximum_Latency" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.Operation_Type" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.Result_Precision_Type" xilinx:valueSource="user"/>
           </xilinx:configElementInfos>
