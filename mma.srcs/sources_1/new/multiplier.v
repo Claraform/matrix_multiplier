@@ -21,16 +21,30 @@
 
 
 module multiplier( 
-    // These signal names are for the nexys A7. 
-    // Check your constraint file to get the right names
     input  CLK100MHZ,
+    // Uncomment for FPGA implementation
+//    input BTNL, 
+//    input BTNR,
+    // Uncomment for testbench
     output wire [31:0] a,
     output wire [31:0] b,
     output wire [31:0] c,
     output wire [31:0] res
-    //input [7:0] SW,  
+    // Uncomment for FPGA implementation
+    //output reg finish 
     //output  [2:0] LED
     );
+    
+    // Uncomment for FPGA implementation
+    
+    //Debounce module for activate button
+    wire activate;
+    Debounce change_activate (CLK100MHZ, BTNL, activate);
+    
+    //Debounce module for reset button
+    wire restart;
+    Debounce change_restart (CLK100MHZ, BTNR, restart);
+
     //Matrix dimension
     localparam [5:0] row = 2;
     localparam [5:0] col = 4;
@@ -79,11 +93,12 @@ module multiplier(
     
     reg [7:0] state = RESET;                 // Current state
     
-    reg [31:0] count = 0;                  // Counter value (clock cycles)
+    reg [31:0] count = 0;                  // Counter value for waiting
         
 //////////////////////////////////////////////////////////////////////////////////
 // Initialization of IP
 //////////////////////////////////////////////////////////////////////////////////
+    
     //BRAM intiilisation
     matrixA matrix_a(
           .clka(CLK100MHZ),    // input wire clka
@@ -113,6 +128,7 @@ module multiplier(
           .douta(C_dout)  // output wire [31 : 0] douta
     );
     
+    //Floating point module
     floating_point_0 floatmulti (
           .aclk(CLK100MHZ),                                  // input wire aclk
           .s_axis_a_tvalid(a_vbit),            // input wire s_axis_a_tvalid
@@ -124,8 +140,10 @@ module multiplier(
           .m_axis_result_tvalid(result_vbit),  // output wire m_axis_result_tvalid
           .m_axis_result_tdata(result)    // output wire [31 : 0] m_axis_result_tdata
     );
+    
 //////////////////////////////////////////////////////////////////////////////////    
-   
+
+   // Uncomment for testbench
     assign res = result;
     assign a = a_input;
     assign b = b_input;
@@ -146,12 +164,18 @@ always @(posedge CLK100MHZ) begin
             c_input <= 0;
             cnt_row <= 0;
             cnt_col <= 0;
+            // Uncomment for FPGA implementation
+            //finish <= 0;
             state <= START;
         end
-        START: begin // Multiply element - initialisation
-            state <= FETCH;
+        START: begin
+        // Uncomment for FPGA implementation
+            //if (activate) begin
+                state <= FETCH;
+            //end
         end
         FETCH: begin
+        // Fetch matrix elements from BRAM
             a_input <= A_dout;
             A_addr <= A_addr + 1;
             b_input <= B_dout;
@@ -159,12 +183,14 @@ always @(posedge CLK100MHZ) begin
             state <= ASSERT;
         end
         ASSERT: begin
+        // Assert FP inputs as valid
             a_vbit <= 1;
             b_vbit <= 1;
             c_vbit <= 1;
             state <= WAIT;
         end
         DEASSERT: begin
+        // FP inputs invalid
             a_vbit <= 0;
             b_vbit <= 0;
             c_vbit <= 0;
@@ -173,6 +199,7 @@ always @(posedge CLK100MHZ) begin
             state <= FETCH;
         end
         WAIT: begin
+        // Wait for FP to calculate output
             if (count < 18) begin
                 count <= count + 1;
             end
@@ -183,9 +210,10 @@ always @(posedge CLK100MHZ) begin
             end
         end
         CHECK: begin
-            //Check dimensions
+            // Check dimensions
             c_input <= result;
             if (cnt_col == col) begin
+                cnt_col <= 0;
                 state <= STORE;
             end
             else begin
@@ -193,6 +221,7 @@ always @(posedge CLK100MHZ) begin
             end
         end
         STORE: begin
+        // Store element to BRAM
             C_din <= result;
             C_addr <= C_addr + 1;
             C_we <= 1;
@@ -201,10 +230,16 @@ always @(posedge CLK100MHZ) begin
             if (cnt_row == row) begin
                 state <= IDLE;
             end
-            state <= DEASSERT;
+            else begin
+                state <= DEASSERT;
+            end
         end
         IDLE: begin
-        
+        // Uncomment for FPGA implementation
+            //finish <= 1;
+            //if (restart) begin
+            //    state <= RESET;
+            //end
         end
 
     endcase

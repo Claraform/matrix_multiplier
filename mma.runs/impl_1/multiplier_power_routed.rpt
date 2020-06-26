@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2.1 (lin64) Build 2729669 Thu Dec  5 04:48:12 MST 2019
-| Date             : Thu Jun 25 11:44:09 2020
+| Date             : Fri Jun 26 14:11:21 2020
 | Host             : utnubu running 64-bit Ubuntu 18.04.1 LTS
 | Command          : report_power -file multiplier_power_routed.rpt -pb multiplier_power_summary_routed.pb -rpx multiplier_power_routed.rpx
 | Design           : multiplier
@@ -29,44 +29,36 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+----------------------------------+
-| Total On-Chip Power (W)  | 36.195 (Junction temp exceeded!) |
-| Design Power Budget (W)  | Unspecified*                     |
-| Power Budget Margin (W)  | NA                               |
-| Dynamic (W)              | 35.404                           |
-| Device Static (W)        | 0.791                            |
-| Effective TJA (C/W)      | 4.6                              |
-| Max Ambient (C)          | 0.0                              |
-| Junction Temperature (C) | 125.0                            |
-| Confidence Level         | Low                              |
-| Setting File             | ---                              |
-| Simulation Activity File | ---                              |
-| Design Nets Matched      | NA                               |
-+--------------------------+----------------------------------+
++--------------------------+--------------+
+| Total On-Chip Power (W)  | 0.084        |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 0.000        |
+| Device Static (W)        | 0.084        |
+| Effective TJA (C/W)      | 4.6          |
+| Max Ambient (C)          | 84.6         |
+| Junction Temperature (C) | 25.4         |
+| Confidence Level         | High         |
+| Setting File             | ---          |
+| Simulation Activity File | ---          |
+| Design Nets Matched      | NA           |
++--------------------------+--------------+
 * Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
 
 
 1.1 On-Chip Components
 ----------------------
 
-+-------------------------+-----------+----------+-----------+-----------------+
-| On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
-+-------------------------+-----------+----------+-----------+-----------------+
-| Slice Logic             |     4.310 |     2634 |       --- |             --- |
-|   LUT as Logic          |     3.612 |      695 |     63400 |            1.10 |
-|   Register              |     0.484 |     1361 |    126800 |            1.07 |
-|   LUT as Shift Register |     0.128 |       34 |     19000 |            0.18 |
-|   CARRY4                |     0.068 |       49 |     15850 |            0.31 |
-|   F7/F8 Muxes           |     0.011 |       10 |     63400 |            0.02 |
-|   BUFG                  |     0.007 |        3 |        32 |            9.38 |
-|   Others                |     0.000 |      310 |       --- |             --- |
-| Signals                 |     8.178 |     1844 |       --- |             --- |
-| Block RAM               |     0.206 |      0.5 |       135 |            0.37 |
-| DSPs                    |     1.292 |        4 |       240 |            1.67 |
-| I/O                     |    21.418 |      135 |       210 |           64.29 |
-| Static Power            |     0.791 |          |           |                 |
-| Total                   |    36.195 |          |           |                 |
-+-------------------------+-----------+----------+-----------+-----------------+
++--------------+-----------+----------+-----------+-----------------+
+| On-Chip      | Power (W) | Used     | Available | Utilization (%) |
++--------------+-----------+----------+-----------+-----------------+
+| Clocks       |     0.000 |        3 |       --- |             --- |
+| Slice Logic  |     0.000 |        1 |       --- |             --- |
+|   Others     |     0.000 |        1 |       --- |             --- |
+| I/O          |     0.000 |        1 |       210 |            0.48 |
+| Static Power |     0.084 |          |           |                 |
+| Total        |     0.084 |          |           |                 |
++--------------+-----------+----------+-----------+-----------------+
 
 
 1.2 Power Supply Summary
@@ -75,16 +67,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+------------+
-| Vccint    |       1.000 |    14.546 |      13.983 |      0.563 | Unspecified | NA         |
-| Vccaux    |       1.800 |     1.846 |       1.753 |      0.093 | Unspecified | NA         |
+| Vccint    |       1.000 |     0.015 |       0.000 |      0.015 | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.018 |       0.000 |      0.018 | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 | Unspecified | NA         |
-| Vcco18    |       1.800 |    10.148 |      10.144 |      0.004 | Unspecified | NA         |
+| Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 | Unspecified | NA         |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 | Unspecified | NA         |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 | Unspecified | NA         |
-| Vccbram   |       1.000 |     0.025 |       0.007 |      0.018 | Unspecified | NA         |
+| Vccbram   |       1.000 |     0.000 |       0.000 |      0.000 | Unspecified | NA         |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 | Unspecified | NA         |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 | Unspecified | NA         |
@@ -94,17 +86,17 @@ Table of Contents
 1.3 Confidence Level
 --------------------
 
-+-----------------------------+------------+--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-| User Input Data             | Confidence | Details                                                | Action                                                                                                             |
-+-----------------------------+------------+--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-| Design implementation state | High       | Design is routed                                       |                                                                                                                    |
-| Clock nodes activity        | Low        | User specified less than 75% of clocks                 | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
-| I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view           |
-| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views         |
-| Device models               | High       | Device models are Production                           |                                                                                                                    |
-|                             |            |                                                        |                                                                                                                    |
-| Overall confidence level    | Low        |                                                        |                                                                                                                    |
-+-----------------------------+------------+--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
++-----------------------------+------------+------------------------------------------------+--------+
+| User Input Data             | Confidence | Details                                        | Action |
++-----------------------------+------------+------------------------------------------------+--------+
+| Design implementation state | High       | Design is routed                               |        |
+| Clock nodes activity        | High       | User specified more than 95% of clocks         |        |
+| I/O nodes activity          | High       | User specified more than 95% of inputs         |        |
+| Internal nodes activity     | High       | User specified more than 25% of internal nodes |        |
+| Device models               | High       | Device models are Production                   |        |
+|                             |            |                                                |        |
+| Overall confidence level    | High       |                                                |        |
++-----------------------------+------------+------------------------------------------------+--------+
 
 
 2. Settings
@@ -139,16 +131,8 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+------------------------+-----------+
-| Name                   | Power (W) |
-+------------------------+-----------+
-| multiplier             |    35.404 |
-|   float                |    10.666 |
-|     U0                 |    10.666 |
-|       i_synth          |    10.666 |
-|   your_instance_name   |     2.003 |
-|     U0                 |     2.003 |
-|       inst_blk_mem_gen |     2.003 |
-+------------------------+-----------+
++------+-----------+
+| Name | Power (W) |
++------+-----------+
 
 

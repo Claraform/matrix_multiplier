@@ -60,11 +60,13 @@ proc step_failed { step } {
   close $ch
 }
 
+set_msg_config -id {Common 17-41} -limit 10000000
 
 start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param xicom.use_bs_reader 1
   set_param chipscope.maxJobs 2
   create_project -in_memory -part xc7a100tcsg324-1
   set_property board_part digilentinc.com:nexys-a7-100t:part0:1.0 [current_project]
@@ -77,7 +79,10 @@ set rc [catch {
   set_property XPM_LIBRARIES XPM_MEMORY [current_project]
   add_files -quiet /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.runs/synth_1/multiplier.dcp
   read_ip -quiet /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/ip/floating_point_0/floating_point_0.xci
-  read_ip -quiet /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+  read_ip -quiet /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/ip/matrixA/matrixA.xci
+  read_ip -quiet /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/ip/matrixB/matrixB.xci
+  read_ip -quiet /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/sources_1/ip/matrixC/matrixC.xci
+  read_xdc /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.srcs/constrs_1/imports/new/constraints.xdc
   link_design -top multiplier -part xc7a100tcsg324-1
   close_msg_db -file init_design.pb
 } RESULT]

@@ -1,0 +1,129 @@
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module mma_tb.m.matrix_a.inst.native_mem_module.blk_mem_gen_v8_4_4_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module mma_tb.m.matrix_b.inst.native_mem_module.blk_mem_gen_v8_4_4_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module mma_tb.m.matrix_c.inst.native_mem_module.blk_mem_gen_v8_4_4_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+clk cycle  start tvalid    res
+cycle=  0 a=xxxxxxxx b=xxxxxxxx c=00000000 result=Xxxxxxxx
+cycle=  1 a=xxxxxxxx b=xxxxxxxx c=00000000 result=00000000
+cycle=  2 a=40266666 b=40266666 c=00000000 result=00000000
+cycle=  3 a=40266666 b=40266666 c=00000000 result=00000000
+cycle=  4 a=40266666 b=40266666 c=00000000 result=00000000
+cycle=  5 a=40266666 b=40266666 c=00000000 result=00000000
+cycle=  6 a=40266666 b=40266666 c=00000000 result=00000000
+cycle=  7 a=40266666 b=40266666 c=00000000 result=00000000
+Warning: OPMODE Input Warning : The OPMODE 01100XX with CARRYINSEL  000 to DSP48E1 instance is invalid.
+Time: 320 ns  Iteration: 4  Process: /mma_tb/m/floatmulti/U0/i_synth/fma_op/OP/addsub/add/ALIGN_BLK/FRAC_ADDSUB/dsp_add/one_dsp/FRAC_ADDSUB/dsp48e1_add/DSP48E1_ADD/i_no_versal_es1_workaround/DSP/prcs_opmode_drc  File: /home/clarastassen/Xilinx/Vivado/2019.2/data/vhdl/src/unisims/primitive/DSP48E1.vhd
+cycle=  8 a=40266666 b=40266666 c=00000000 result=00000000
+cycle=  9 a=40266666 b=40266666 c=00000000 result=00000000
+cycle= 10 a=40266666 b=40266666 c=00000000 result=00000000
+cycle= 11 a=40266666 b=40266666 c=00000000 result=00000000
+cycle= 12 a=40266666 b=40266666 c=00000000 result=00000000
+cycle= 13 a=40266666 b=40266666 c=00000000 result=00000000
+cycle= 14 a=40266666 b=40266666 c=00000000 result=00000000
+cycle= 15 a=40266666 b=40266666 c=00000000 result=00000000
+cycle= 16 a=40266666 b=40266666 c=00000000 result=00000000
+cycle= 17 a=40266666 b=40266666 c=00000000 result=40800000
+cycle= 18 a=40266666 b=40266666 c=00000000 result=00000000
+cycle= 19 a=40266666 b=40266666 c=00000000 result=00000000
+cycle= 20 a=40266666 b=40266666 c=00000000 result=00000000
+cycle= 21 a=40266666 b=40266666 c=00000000 result=40d851ea
+cycle= 22 a=40266666 b=40266666 c=00000000 result=40d851ea
+cycle= 23 a=40266666 b=40266666 c=40d851ea result=40d851ea
+cycle= 24 a=40266666 b=40266666 c=40d851ea result=40d851ea
+cycle= 25 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 26 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 27 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 28 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 29 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 30 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 31 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 32 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 33 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 34 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 35 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 36 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 37 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 38 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 39 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 40 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 41 a=3f99999a b=3f99999a c=40d851ea result=40d851ea
+cycle= 42 a=3f99999a b=3f99999a c=40d851ea result=415851ea
+cycle= 43 a=3f99999a b=3f99999a c=40d851ea result=415851ea
+cycle= 44 a=3f99999a b=3f99999a c=40d851ea result=41033333
+cycle= 45 a=3f99999a b=3f99999a c=40d851ea result=41033333
+cycle= 46 a=3f99999a b=3f99999a c=41033333 result=41033333
+cycle= 47 a=3f99999a b=3f99999a c=41033333 result=41033333
+cycle= 48 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 49 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 50 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 51 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 52 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 53 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 54 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 55 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 56 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 57 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 58 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 59 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 60 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 61 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 62 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 63 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 64 a=40466666 b=40466666 c=41033333 result=41033333
+cycle= 65 a=40466666 b=40466666 c=41033333 result=411a3d71
+cycle= 66 a=40466666 b=40466666 c=41033333 result=411a3d71
+cycle= 67 a=40466666 b=40466666 c=41033333 result=418e7ae1
+cycle= 68 a=40466666 b=40466666 c=41033333 result=418e7ae1
+cycle= 69 a=40466666 b=40466666 c=418e7ae1 result=418e7ae1
+cycle= 70 a=40466666 b=40466666 c=418e7ae1 result=418e7ae1
+cycle= 71 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 72 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 73 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 74 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 75 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 76 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 77 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 78 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 79 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 80 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 81 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 82 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 83 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 84 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 85 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 86 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 87 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=418e7ae1
+cycle= 88 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=41db5c28
+cycle= 89 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=41db5c28
+cycle= 90 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=41939999
+cycle= 91 a=3f4ccccd b=3f4ccccd c=418e7ae1 result=41939999
+cycle= 92 a=3f4ccccd b=3f4ccccd c=41939999 result=41939999
+cycle= 93 a=3f4ccccd b=3f4ccccd c=00000000 result=41939999
+cycle= 94 a=3f4ccccd b=3f4ccccd c=00000000 result=41939999
+cycle= 95 a=40266666 b=40266666 c=00000000 result=41939999
+cycle= 96 a=40266666 b=40266666 c=00000000 result=41939999
+cycle= 97 a=40266666 b=40266666 c=00000000 result=41939999
+cycle= 98 a=40266666 b=40266666 c=00000000 result=41939999
+cycle= 99 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=100 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=101 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=102 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=103 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=104 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=105 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=106 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=107 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=108 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=109 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=110 a=40266666 b=40266666 c=00000000 result=41939999
+cycle=111 a=40266666 b=40266666 c=00000000 result=4198b851
+cycle=112 a=40266666 b=40266666 c=00000000 result=3f23d70b
+cycle=113 a=40266666 b=40266666 c=00000000 result=3f23d70b
+cycle=114 a=40266666 b=40266666 c=00000000 result=40d851ea
+cycle=115 a=40266666 b=40266666 c=00000000 result=40d851ea
+cycle=116 a=40266666 b=40266666 c=40d851ea result=40d851ea

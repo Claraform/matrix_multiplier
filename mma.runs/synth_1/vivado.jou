@@ -2,8 +2,8 @@
 # Vivado v2019.2.1 (64-bit)
 # SW Build 2729669 on Thu Dec  5 04:48:12 MST 2019
 # IP Build 2729494 on Thu Dec  5 07:38:25 MST 2019
-# Start of session at: Thu Jun 25 11:41:18 2020
-# Process ID: 32426
+# Start of session at: Fri Jun 26 13:59:35 2020
+# Process ID: 10230
 # Current directory: /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.runs/synth_1
 # Command line: vivado -log multiplier.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source multiplier.tcl
 # Log file: /home/clarastassen/Xilinx/Vivado/2019.2/mma/mma.runs/synth_1/multiplier.vds

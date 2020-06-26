@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2.1 (lin64) Build 2729669 Thu Dec  5 04:48:12 MST 2019
-| Date         : Thu Jun 25 11:44:09 2020
+| Date         : Fri Jun 26 14:11:22 2020
 | Host         : utnubu running 64-bit Ubuntu 18.04.1 LTS
 | Command      : report_timing_summary -max_paths 10 -file multiplier_timing_summary_routed.rpt -pb multiplier_timing_summary_routed.pb -rpx multiplier_timing_summary_routed.rpx -warn_on_violation
 | Design       : multiplier
@@ -54,11 +54,7 @@ Table of Contents
 
 1. checking no_clock
 --------------------
- There are 1243 register/latch pins with no clock driven by root clock pin: CLK100MHZ (HIGH)
-
- There are 35 register/latch pins with no clock driven by root clock pin: calculate_reg/Q (HIGH)
-
- There are 143 register/latch pins with no clock driven by root clock pin: fetch_reg/Q (HIGH)
+ There are 0 register/latch pins with no clock.
 
 
 2. checking constant_clock
@@ -73,7 +69,7 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 2087 pins that are not constrained for maximum delay. (HIGH)
+ There are 0 pins that are not constrained for maximum delay.
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -87,7 +83,7 @@ Table of Contents
 
 6. checking no_output_delay
 ---------------------------
- There are 134 ports with no output delay specified. (HIGH)
+ There are 0 ports with no output delay specified.
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -135,13 +131,17 @@ Table of Contents
          NA           NA                     NA                   NA           NA           NA                     NA                   NA           NA           NA                      NA                    NA  
 
 
-There are no user specified timing constraints.
+All user specified timing constraints are met.
 
 
 ------------------------------------------------------------------------------------------------
 | Clock Summary
 | -------------
 ------------------------------------------------------------------------------------------------
+
+Clock        Waveform(ns)       Period(ns)      Frequency(MHz)
+-----        ------------       ----------      --------------
+sys_clk_pin  {0.000 5.000}      10.000          100.000         
 
 
 ------------------------------------------------------------------------------------------------
