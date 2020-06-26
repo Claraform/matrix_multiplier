@@ -1,0 +1,4 @@
+vhdl xil_defaultlib  \
+"../../../../memory.srcs/sources_1/ip/floatmulti/sim/floatmulti.vhd" \
+
+nosort

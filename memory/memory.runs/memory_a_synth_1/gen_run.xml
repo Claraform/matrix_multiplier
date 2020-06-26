@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="memory_a_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1593119127">
+  <File Type="PA-TCL" Name="memory_a.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="memory_a_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="memory_a_reports.tcl"/>
+  <File Type="RDS-RDS" Name="memory_a.vds"/>
+  <File Type="RDS-UTIL" Name="memory_a_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="memory_a_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="memory_a.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="memory_a_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="memory_a_timing_summary_synth.pb"/>
+  <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/memory_a">
+    <File Path="$PSRCDIR/sources_1/ip/memory_a/memory_a.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="memory_a"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/memory_a">
+    <File Path="$PSRCDIR/sources_1/ip/memory_a/memory_a.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="memory_a"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>
