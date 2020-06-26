@@ -1,7 +1,10 @@
 ### UCT EEE4120F- High Performance Digital Embedded Systems
 # YODA Project Code repository
 
-Authors:    Clara Stassen       STSCLA001 
+Authors:  
+
+            Clara Stassen       STSCLA001 
+           
             Michael Granelli    GRNMIC028
            
 -------------------------------------------------------
